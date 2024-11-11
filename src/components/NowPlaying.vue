@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import * as Vibrant from 'node-vibrant'
 import props from '@/utils/props.js'
 
 export default {
