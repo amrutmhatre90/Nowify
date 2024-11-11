@@ -20,6 +20,20 @@
     <div v-else class="now-playing" :class="getNowPlayingClass()">
       <h1 class="now-playing__idle-heading">No music is playing 😔</h1>
     </div>
+
+    <!-- Weather widget at the bottom of the page -->
+    <div class="weather-widget-container">
+      <a class="weatherwidget-io" 
+         href="https://forecast7.com/en/19d0872d88/mumbai/" 
+         data-label_1="MUMBAI" 
+         data-label_2="WEATHER" 
+         data-theme="dark">
+         MUMBAI WEATHER
+      </a>
+      <script>
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+      </script>
+    </div>
   </div>
 </template>
 
@@ -303,4 +317,23 @@ export default {
 }
 </script>
 
-<style src="@/styles/components/now-playing.scss" lang="scss" scoped></style>
+<style src="@/styles/components/now-playing.scss" lang="scss" scoped>
+#app {
+  position: relative;
+  min-height: 100vh; /* Ensure the content takes up full screen */
+}
+
+.now-playing {
+  padding-bottom: 50px; /* Ensure space for the widget */
+}
+
+.weather-widget-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: #000;
+  z-index: 9999; /* Make sure the widget stays on top */
+}
+</style>
