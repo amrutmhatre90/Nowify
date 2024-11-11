@@ -18,7 +18,121 @@
       </div>
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
-      <h1 class="now-playing__idle-heading">No music is playing 😔</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather and Time</title>
+
+    <!-- Link to Iconvault or another icon library (replace with actual Iconvault link) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+            margin: 0;
+            background-color: #000000;  /* Set background to black */
+            color: white;
+            font-family: Tahoma, sans-serif;  /* Set font to Tahoma */
+        }
+        #datetime {
+            font-size: 36px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 60%;  /* Take 60% of the page */
+        }
+        .date-line, .time-line {
+            font-size: 36px;  /* Font size for both date and time */
+        }
+        .time-line {
+            margin-top: 10px;
+        }
+        .now-playing__idle-heading {
+            font-size: 40px;  /* Slightly larger font size for the "No music" message */
+            margin-top: 20px;  /* Add margin for spacing */
+            color: white;      /* Make the text white */
+        }
+        .weatherwidget-io {
+            width: 100%;  /* Full width for weather widget */
+            height: 40%;  /* Set to take up 40% of the page */
+            display: block;
+        }
+        footer {
+            width: 100%;
+        }
+        .icon {
+            font-size: 24px;  /* Adjust icon size */
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Date and Time Section with Day and Time -->
+    <div id="datetime">
+        <div class="date-line">
+            <i class="fas fa-calendar-alt icon"></i> <!-- Example Icon -->
+            <span id="day-date"></span>
+        </div>
+
+        <div class="time-line">
+            <i class="fas fa-clock icon"></i> <!-- Example Icon -->
+            <span id="time"></span>
+        </div>
+
+        <!-- Now Playing Message -->
+        <h1 class="now-playing__idle-heading">😔 No music is playing!!!</h1>
+    </div>
+
+    <!-- Weather Widget in Footer -->
+    <footer>
+        <a class="weatherwidget-io" href="https://forecast7.com/en/19d0872d88/mumbai/" 
+           data-label_1="MUMBAI" data-label_2="WEATHER" data-theme="dark">MUMBAI WEATHER</a>
+        <script>
+            !function(d,s,id){
+                var js,fjs=d.getElementsByTagName(s)[0];
+                if(!d.getElementById(id)){
+                    js=d.createElement(s);
+                    js.id=id;
+                    js.src='https://weatherwidget.io/js/widget.min.js';
+                    fjs.parentNode.insertBefore(js,fjs);
+                }
+            }(document,'script','weatherwidget-io-js');
+        </script>
+    </footer>
+
+    <!-- JavaScript to Display Date, Day, and Time -->
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+
+            // Format day and date
+            const dayOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDayDate = now.toLocaleDateString('en-US', dayOptions);
+
+            // Format time
+            const timeOptions = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+            const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
+
+            // Set the content of the day-date and time elements
+            document.getElementById('day-date').textContent = formattedDayDate;
+            document.getElementById('time').textContent = formattedTime;
+        }
+
+        // Update date and time every second
+        setInterval(updateDateTime, 1000);
+        updateDateTime();  // Initialize the time immediately on page load
+    </script>
+
+</body>
+</html>
+
     </div>
   </div>
 </template>
