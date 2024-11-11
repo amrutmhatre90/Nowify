@@ -19,7 +19,10 @@
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
       <h1 class="now-playing__idle-heading">No music is playing 😔</h1>
-      <!-- Weather widget below the "No music" message -->
+    </div>
+
+    <!-- Weather widget at the bottom of the page -->
+    <div class="weather-widget-container">
       <a class="weatherwidget-io" 
          href="https://forecast7.com/en/19d0872d88/mumbai/" 
          data-label_1="MUMBAI" 
@@ -314,4 +317,18 @@ export default {
 }
 </script>
 
-<style src="@/styles/components/now-playing.scss" lang="scss" scoped></style>
+<style src="@/styles/components/now-playing.scss" lang="scss" scoped>
+#app {
+  position: relative;
+  min-height: 100vh; /* Ensure the content takes up full screen */
+}
+
+.weather-widget-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  z-index: 10; /* Ensure the widget is on top */
+}
+</style>
