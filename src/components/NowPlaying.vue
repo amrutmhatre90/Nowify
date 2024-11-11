@@ -323,12 +323,17 @@ export default {
   min-height: 100vh; /* Ensure the content takes up full screen */
 }
 
+.now-playing {
+  padding-bottom: 50px; /* Ensure space for the widget */
+}
+
 .weather-widget-container {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   padding: 10px;
   text-align: center;
-  z-index: 10; /* Ensure the widget is on top */
+  background-color: #000;
+  z-index: 9999; /* Make sure the widget stays on top */
 }
 </style>
